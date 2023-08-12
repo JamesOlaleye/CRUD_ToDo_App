@@ -5,11 +5,13 @@ const uuid_1 = require("uuid");
 const todoModel_1 = require("../model/todoModel");
 const CreateTodo = async (req, res) => {
     try {
+        const verified = req.user;
+        console.log(verified);
         const id = (0, uuid_1.v4)();
         const todoRecord = await todoModel_1.TodoInstance.create({
             id,
             ...req.body,
-            // userId: '234',
+            userId: verified.id,
         });
         return res.status(201).json({
             msg: 'you have successfully created a todo',

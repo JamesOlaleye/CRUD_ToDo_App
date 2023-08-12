@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.options = exports.registerUserSchema = void 0;
+exports.loginUserSchema = exports.options = exports.registerUserSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.registerUserSchema = joi_1.default.object().keys({
     email: joi_1.default.string().trim().lowercase().required(),
@@ -26,3 +26,9 @@ exports.options = {
         },
     },
 };
+exports.loginUserSchema = joi_1.default.object().keys({
+    email: joi_1.default.string().trim().lowercase().required(),
+    password: joi_1.default.string()
+        .regex(/^[a-zA-Z0-9]{3,30}$/)
+        .required(),
+});
