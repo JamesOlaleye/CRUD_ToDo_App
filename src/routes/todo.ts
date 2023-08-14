@@ -3,6 +3,6 @@ import { CreateTodo } from '../controller/todoController';
 import {auth} from '../middlewares/auth'
 const router = express.Router();
 
-router.post('/', auth, CreateTodo);
+router.post('/create', auth, CreateTodo);
 
 export default router;

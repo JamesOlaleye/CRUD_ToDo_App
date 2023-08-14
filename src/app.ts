@@ -7,6 +7,7 @@ import db from './config/database.config';
 
 import todoRouter from './routes/todo';
 import usersRouter from './routes/users';
+import homePage from './routes/page';
 
 db.sync()
   .then(() => {
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/todos', todoRouter);
 app.use('/users', usersRouter);
+app.use('/', homePage);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
