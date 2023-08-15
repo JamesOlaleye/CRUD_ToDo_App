@@ -8,6 +8,7 @@ export interface UserAttributes {
   firstName: string;
   phoneNumber: string;
   password: string;
+  confirm_password: string;
 }
 
 export class UserInstance extends Model<UserAttributes> {}
@@ -37,12 +38,16 @@ UserInstance.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    confirm_password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize: db,
-    tableName: 'user',
+    tableName: 'Users',
   }
 );
 
-UserInstance.hasMany(TodoInstance, { foreignKey: 'userId', as: 'todo' });
-TodoInstance.belongsTo(UserInstance, { foreignKey: 'userId', as: 'user' });
+UserInstance.hasMany(TodoInstance, { foreignKey: 'userId', as: 'Todos' });
+TodoInstance.belongsTo(UserInstance, { foreignKey: 'userId', as: 'Users' });

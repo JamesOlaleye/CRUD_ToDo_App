@@ -34,9 +34,13 @@ UserInstance.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
+    confirm_password: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
     sequelize: database_config_1.default,
-    tableName: 'user',
+    tableName: 'Users',
 });
-UserInstance.hasMany(todoModel_1.TodoInstance, { foreignKey: 'userId', as: 'todo' });
-todoModel_1.TodoInstance.belongsTo(UserInstance, { foreignKey: 'userId', as: 'user' });
+UserInstance.hasMany(todoModel_1.TodoInstance, { foreignKey: 'userId', as: 'Todos' });
+todoModel_1.TodoInstance.belongsTo(UserInstance, { foreignKey: 'userId', as: 'Users' });

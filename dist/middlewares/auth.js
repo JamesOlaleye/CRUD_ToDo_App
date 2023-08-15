@@ -9,6 +9,14 @@ const userModel_1 = require("../model/userModel");
 const jwtsecret = process.env.JWT_SECRET;
 const auth = async (req, res, next) => {
     try {
+        /*
+        //req.cookies.jwt
+        const authorization = req.cookies.jwt
+        if (!authorization) {
+          return res.status(401).json({ error: 'Kindly sign in as a user' });
+        }
+        let verified = jwt.verify(authorization, jwtsecret);
+      */
         // Grab token from authorization header -local storage (alternatively: req.cookies.jwt)
         const authorization = req.headers.authorization;
         if (!authorization) {
@@ -26,7 +34,9 @@ const auth = async (req, res, next) => {
         // find user by id;
         const user = await userModel_1.UserInstance.findOne({ where: { id } });
         if (!user) {
-            return res.status(401).json({ error: 'kindly register/sign in as a user' });
+            return res
+                .status(401)
+                .json({ error: 'kindly register/sign in as a user' });
         }
         // if user allow access
         req.user = verified;

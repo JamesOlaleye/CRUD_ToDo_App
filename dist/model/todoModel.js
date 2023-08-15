@@ -29,5 +29,5 @@ TodoInstance.init({
     },
 }, {
     sequelize: database_config_1.default,
-    tableName: 'todo',
+    tableName: 'Todos',
 });

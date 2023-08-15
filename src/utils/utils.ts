@@ -24,8 +24,17 @@ export const options = {
 };
 
 export const loginUserSchema = Joi.object().keys({
-    email: Joi.string().trim().lowercase().required(),
-    password: Joi.string()
-      .regex(/^[a-zA-Z0-9]{3,30}$/)
-      .required(),
-  });
+  email: Joi.string().trim().lowercase().required(),
+  password: Joi.string()
+    .regex(/^[a-zA-Z0-9]{3,30}$/)
+    .required(),
+});
+
+export const createTodoSchema = Joi.object().keys({
+    description:Joi.string().lowercase(),
+    completed: Joi.boolean()
+  })
+
+export const updateTodoSchema = Joi.object().keys({
+  completed: Joi.boolean(),
+});

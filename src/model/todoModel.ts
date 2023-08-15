@@ -32,6 +32,6 @@ TodoInstance.init(
   },
   {
     sequelize: db,
-    tableName: 'todo',
+    tableName: 'Todos',
   }
 );
